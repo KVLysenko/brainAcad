@@ -28,6 +28,7 @@ public class Refrigerator extends BaseEntity {
                 "Объем: " + getVolume() + "л." + "\n" +
                 "Цвет: " + getColor() + "\n" +
                 "Цена: " + getPrice() + "грн." +  "\n" + "\n" +
+                "Для добавления в корзину нажмите 9" + "\n" +
                 "Для возврата в предыдущее меню нажмите 0");
     }
 }

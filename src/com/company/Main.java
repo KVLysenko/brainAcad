@@ -12,6 +12,8 @@ public class Main {
         int userAnsw;
         int menu = -1;
         int itemNum = -1;
+        ShopBasket basket = new ShopBasket();
+
 
         BaseEntity[][] menuArr = new BaseEntity[3][4];
         menuArr[0][0] = new Refrigerator("LG", "kg458ay", "Металлик",  5406.15, 117);
@@ -30,6 +32,13 @@ public class Main {
         while(true){
             if (menu < 0 ){
                 menu = selectMenu();
+                if (menu == -1){
+                    break;
+                }else if (menu == 8){
+                    basket(basket);
+                    menu = -1;
+                    continue;
+                }
             }
 
             if (itemNum < 0){
@@ -37,7 +46,6 @@ public class Main {
                     System.out.println(i + 1 + ". " + menuArr[menu][i]);
                 }
                 System.out.println("\n" + "Для возврата в предыдущее меню нажмите 0");
-
                 itemNum = selectItem();
                 if (itemNum == -1){
                     menu = -1;
@@ -49,6 +57,10 @@ public class Main {
             userAnsw = scanner.nextInt();
             if (userAnsw == 0){
                 itemNum = -1;
+            }else if (userAnsw == 9){
+                basket.add(menuArr[menu][itemNum]);
+                itemNum = -1;
+                System.out.println("Добавлено");
             }
         }
 
@@ -59,19 +71,40 @@ public class Main {
         System.out.println("Каталог товаров: " +
                 "\n1" + ". Холодильники;" +
                 "\n2" + ". Стиральные машины;" +
-                "\n3" + ". Микроволновые печи;" +
-                "\n" + "\n" + "Войти в корзину нажмите - 5");
-        return scanner.nextInt() - 1;
+                "\n3" + ". Микроволновые печи.");
+        System.out.println("Для просмотра корзины нажмите 9\nДля выхода нажмите 0");
+        int userAns = scanner.nextInt();
+        if (userAns == 0) {
+            return -1;
+        } else {
+            return userAns -1;
+        }
     }
 
-    public static int selectItem(){
+    public static int selectItem() {
         Scanner scanner = new Scanner(System.in);
         int userAns = scanner.nextInt();
         if (userAns == 0){
             return -1;
-        }else {
+        }else{
             return userAns - 1;
         }
+    }
+
+    public static void basket(ShopBasket basket){
+        while (true){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("В вашей корзине:");
+            basket.allPurchases();
+            int dellNum = scanner.nextInt();
+            if (dellNum == 0){
+                break;
+            }else {
+                basket.dell(dellNum-1);
+            }
+
+        }
+
     }
 }
 
