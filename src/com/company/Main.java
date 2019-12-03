@@ -102,9 +102,7 @@ public class Main {
             }else {
                 basket.dell(dellNum-1);
             }
-
         }
-
     }
 }
 
