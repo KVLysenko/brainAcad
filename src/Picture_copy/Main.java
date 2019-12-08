@@ -5,17 +5,11 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        File dir = new File("copied_picture");
-        if (dir.mkdir()) {
-        } else {
-        }
-        System.out.println(dir.getAbsolutePath());
-
         FileInputStream fileInputStream = null;
         FileOutputStream fileOutputStream = null;
         try {
-            fileInputStream = new FileInputStream("E:\\BrainAcad\\brainAcad\\src\\Picture_copy\\photo_2018-08-31_20-43-09.jpg");
-            fileOutputStream = new FileOutputStream("E:\\BrainAcad\\brainAcad\\src\\Picture_copy\\copied_picture\\photo_2018-08-31_20-43-09.jpg");
+            fileInputStream = new FileInputStream("./src/Picture_copy/photo_2018-08-31_20-43-09.jpg");
+            fileOutputStream = new FileOutputStream("./src/Picture_copy/copy_photo_2018-08-31_20-43-09.jpg");
             int temp;
             while ((temp = fileInputStream.read()) != -1) {
                 fileOutputStream.write(temp);
