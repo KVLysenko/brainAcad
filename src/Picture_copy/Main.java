@@ -21,7 +21,7 @@ public class Main {
                 fileOutputStream.write(temp);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace(); // метод для отладки
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
