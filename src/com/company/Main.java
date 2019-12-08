@@ -29,19 +29,19 @@ public class Main {
         menuArr[2][2] = new Microwave("Beko", "eddf688", "Металлик", 3399.00, 27, 1000);
         menuArr[2][3] = new Microwave("Whirpool", "374dfft", "Белый", 3799.00, 30, 1200);
 
-        while(true){
+        while(true) {
             if (menu < 0 ){
                 menu = selectMenu();
-                if (menu == -1){
+                if (menu == -1) {
                     break;
-                }else if (menu == 8){
+                } else if (menu == 8){
                     basket(basket);
                     menu = -1;
                     continue;
                 }
             }
 
-            if (itemNum < 0){
+            if (itemNum < 0) {
                 for (int i = 0; i < menuArr[menu].length; i++) {
                     System.out.println(i + 1 + ". " + menuArr[menu][i]);
                 }
@@ -55,9 +55,9 @@ public class Main {
             }
 
             userAnsw = scanner.nextInt();
-            if (userAnsw == 0){
+            if (userAnsw == 0) {
                 itemNum = -1;
-            }else if (userAnsw == 9){
+            } else if (userAnsw == 9){
                 basket.add(menuArr[menu][itemNum]);
                 itemNum = -1;
                 System.out.println("Добавлено");
@@ -66,7 +66,7 @@ public class Main {
 
     }
 
-    public static int selectMenu(){
+    public static int selectMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Каталог товаров: " +
                 "\n1" + ". Холодильники;" +
@@ -86,23 +86,22 @@ public class Main {
         int userAns = scanner.nextInt();
         if (userAns == 0){
             return -1;
-        }else{
+        } else {
             return userAns - 1;
         }
     }
 
     public static void basket(ShopBasket basket){
-        while (true){
+        while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("В вашей корзине:");
             basket.allPurchases();
             int dellNum = scanner.nextInt();
             if (dellNum == 0){
                 break;
-            }else {
+            } else {
                 basket.dell(dellNum-1);
             }
         }
     }
 }
-
