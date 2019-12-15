@@ -12,9 +12,8 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         String userLogin = "bob";
 
-        try (   Socket socket = new Socket("127.0.0.1", 8002);
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())))
-        {
+        try (Socket socket = new Socket("127.0.0.1", 8002);
+             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
             ServerThread serverThread = new ServerThread(socket);
             new Thread(serverThread).start();
             bufferedWriter.write("Пользователь " + userLogin + " подключился к чату:\n");
