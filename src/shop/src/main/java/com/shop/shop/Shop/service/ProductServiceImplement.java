@@ -19,6 +19,7 @@ public class ProductServiceImplement implements ProductService{
 
     @Override
     public ProductEntity getById(Long id) {
+
         return productRepository.findById(id).orElse(null);
     }
 }

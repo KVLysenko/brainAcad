@@ -5,6 +5,31 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
 
+@NamedEntityGraph(
+        name = "Graph.User",
+        includeAllAttributes = false,
+        attributeNodes = {
+                @NamedAttributeNode(value = "id"),
+                @NamedAttributeNode(value = "email"),
+                @NamedAttributeNode(value = "password"),
+                @NamedAttributeNode(value = "firstName"),
+                @NamedAttributeNode(value = "lastName"),
+                @NamedAttributeNode(value = "phoneNumber"),
+                @NamedAttributeNode(value = "adress"),
+                @NamedAttributeNode(value = "roleEntitySet", subgraph = "SubGraph.role"),
+
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "SubGraph.role",
+                        attributeNodes = {
+                                @NamedAttributeNode(value = "id"),
+                                @NamedAttributeNode(value = "name"),
+                        }
+                )
+        }
+)
+
 @Data
 @Entity
 @Table(schema = "security", name = "app_user")
