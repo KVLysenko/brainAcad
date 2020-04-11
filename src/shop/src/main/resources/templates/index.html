@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<div>
+    <div>
+        <h2 th:if="${products eq null or products.empty}">No products yet!</h2>
+        <div th:if="${products ne null}">
+            <h2>products</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
+                    <th>Размер</th>
+                    <th>Изготовитель</th>
+                    <th>Материал</th>
+                    <th>Назначение</th>
+                    <th>Цвет</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${products}">
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.description}"></td>
+                    <td th:text="${item.cost}"></td>
+                    <td th:text="${item.size.name}"></td>
+                    <td th:text="${item.manufacturer.name}"></td>
+                    <td th:text="${item.material.name}"></td>
+                    <td th:text="${item.function.name}"></td>
+                    <td th:text="${item.color.name}"></td>
+                    <td><a th:href="@{/edit/{id}(id=${item.id})}">Edit</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/new">Add</a></p>
+    </div>
+</div>
+</body>
+</html>
