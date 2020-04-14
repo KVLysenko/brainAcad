@@ -1,5 +1,6 @@
 package com.shop.shop.Shop.repository;
 
+import com.shop.shop.Catalogs.model.HomeTextileEntity;
 import com.shop.shop.Shop.model.ProductEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,10 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     @EntityGraph(value = "Graph.Product", type = EntityGraph.EntityGraphType.LOAD)
     Optional<ProductEntity> findById(Long id);
+
+    @EntityGraph(value = "Graph.Product", type = EntityGraph.EntityGraphType.LOAD)
+    Optional<ProductEntity> findAllByNameLike(String name);
+
+    @EntityGraph(value = "Graph.Product", type = EntityGraph.EntityGraphType.LOAD)
+    List<ProductEntity> findByHomeTextile(HomeTextileEntity homeTextileEntity);
 }

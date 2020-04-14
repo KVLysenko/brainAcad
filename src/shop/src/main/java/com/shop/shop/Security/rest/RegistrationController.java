@@ -38,6 +38,10 @@ public class RegistrationController {
 
         userValidator.validate(userEntity, bindingResult);
 
+        if (bindingResult.hasErrors()){
+            return "registration";
+        }
+
         UserEntity newUser = new UserEntity();
         newUser.setEmail(userEntity.getEmail());
         newUser.setPassword(passwordEncoder.encode(userEntity.getPassword()));

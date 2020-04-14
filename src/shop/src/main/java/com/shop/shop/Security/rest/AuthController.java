@@ -6,7 +6,7 @@ import com.shop.shop.Security.repository.UserRepository;
 import com.shop.shop.Security.service.SecurityService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthController {
 
     private UserRepository userRepository;
-
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping
     public String login(Model model) {
@@ -36,12 +36,12 @@ public class AuthController {
             model.addAttribute("userLogin", userLogin);
             return "login";
         }
-        if (userLogin.getPassword().equals(user.getPassword())) {
+        if (!passwordEncoder.matches(userLogin.getPassword(), user.getPassword())) {
             userLogin.setPassword("");
             model.addAttribute("userLogin", userLogin);
             return "login";
         }
-        return "login";
+        return "home";
     }
 
 

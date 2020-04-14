@@ -1,5 +1,6 @@
 package com.shop.shop.Shop.service;
 
+import com.shop.shop.Catalogs.model.HomeTextileEntity;
 import com.shop.shop.Shop.model.ProductEntity;
 import com.shop.shop.Shop.repository.ProductRepository;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,11 @@ public class ProductServiceImplement implements ProductService{
 
     @Override
     public ProductEntity getById(Long id) {
-
         return productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<ProductEntity> getByHomeTextile(HomeTextileEntity homeTextileEntity) {
+        return productRepository.findByHomeTextile(homeTextileEntity);
     }
 }

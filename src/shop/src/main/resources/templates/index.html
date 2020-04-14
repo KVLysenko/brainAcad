@@ -2,45 +2,87 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Products</title>
+    <title>Домашний текстиль</title>
+    <link rel="stylesheet" href="./styleButton.css">
+    <style>
+        body {
+            font: 11pt Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
+            margin: 3; /* Отступы на странице */
+        }
+        h1 {
+            font-size: 36px; /* Размер шрифта */
+            margin: 0; /* Убираем отступы */
+            color: #fc6; /* Цвет текста */
+        }
+        h2 {
+            margin-top: 0; /* Убираем отступ сверху */
+        }
+        #header { /* Верхний блок */
+            background: #0080c0; /* Цвет фона */
+            padding: 10px; /* Поля вокруг текста */
+        }
+        #sidebar { /* Левая колонка */
+            float: left; /* Обтекание справа */
+            border: 1px solid #333; /* Параметры рамки вокруг */
+            width: 20%; /* Ширина колонки */
+            padding: 5px; /* Поля вокруг текста */
+            margin: 10px 10px 20px 5px; /* Значения отступов */
+        }
+        #content { /* Правая колонка */
+            margin: 10px 5px 20px 25%; /* Значения отступов */
+            padding: 5px; /* Поля вокруг текста */
+            border: 1px solid #333; /* Параметры рамки */
+        }
+        #footer { /* Нижний блок */
+            background: #333; /* Цвет фона */
+            padding: 5px; /* Поля вокруг текста */
+            color: #fff; /* Цвет текста */
+            clear: left; /* Отменяем действие float */
+        }
+    </style>
 </head>
 <body>
-<div>
-    <div>
-        <h2 th:if="${products eq null or products.empty}">No products yet!</h2>
-        <div th:if="${products ne null}">
-            <h2>products</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Название</th>
-                    <th>Описание</th>
-                    <th>Цена</th>
-                    <th>Размер</th>
-                    <th>Изготовитель</th>
-                    <th>Материал</th>
-                    <th>Назначение</th>
-                    <th>Цвет</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="item : ${products}">
-                    <td th:text="${item.name}"></td>
-                    <td th:text="${item.description}"></td>
-                    <td th:text="${item.cost}"></td>
-                    <td th:text="${item.size.name}"></td>
-                    <td th:text="${item.manufacturer.name}"></td>
-                    <td th:text="${item.material.name}"></td>
-                    <td th:text="${item.function.name}"></td>
-                    <td th:text="${item.color.name}"></td>
-                    <td><a th:href="@{/edit/{id}(id=${item.id})}">Edit</a></td>
-                    <td><a th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <p><a href="/new">Add</a></p>
+<div id="header"><h1>Домашний текстиль</h1>
+    <div class="text-right">
+        <p> <a href="/login" class="button7">Войти в учётную запись</a>
+            <a href="/registration" class="button7">Зарегистрироваться</a>
+        </p>
     </div>
+
 </div>
+
+<div id="sidebar">
+    <h2>Категории</h2>
+    <div th:each="item : ${homeTextileList}">
+        <a th:href="@{/home-textile-id/{id}(id=${item.id})}"><span th:text="${item.name}"></span></a>
+    </div>
+
+</div>
+<div id="content">
+    <form>
+<!--       <p> <a href="/login"  class="button7" >Войти в учётную запись</a> <a href="/registration" class="button7">Зарегистрироваться</a></p>-->
+<!--        <p> <a href="/registration">Зарегистрироваться</a></p>-->
+        <p><input type="search" name="q" placeholder="Поиск товара">
+            <input type="submit" value="Найти"></p>
+    </form>
+</div>
+<!--<div>-->
+<!--    <div>-->
+
+<!--            <h2>Категории</h2>-->
+
+<!--                <div th:each="item : ${homeTextileList}">-->
+<!--                    <a th:href="@{/home-textile-id/{id}(id=${item.id})}"><span th:text="${item.name}"></span></a>-->
+<!--                </div>-->
+<!--        <form>-->
+<!--            <p><input type="search" name="q" placeholder="Поиск товара">-->
+<!--                <input type="submit" value="Найти"></p>-->
+<!--        </form>-->
+
+<!--        </div>-->
+<!--&lt;!&ndash;        <p><a href="add.html" rel="add.html">Добавить товар</a></p>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<div id="footer" >&copy; Кирилл Лысенко</div>
 </body>
 </html>

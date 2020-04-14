@@ -19,16 +19,18 @@ public class UserValidator {
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
         if (user.getEmail().length() < 6 || user.getEmail().length() > 32) {
-            errors.rejectValue("email", "Size.userForm.userName");
+            errors.rejectValue("emailSize", "Size.userForm.userName");
         }
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            errors.rejectValue("email", "Duplicate.userForm.userName");
+            errors.rejectValue("emailDuplicate", ".userForm.userName");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
         if (user.getPassword().length() < 3 || user.getEmail().length() > 32) {
+            System.out.println("Пароль короткий");
             errors.rejectValue("password", "Size.userForm.password");
         }
+
         if (!user.getConfirmPassword().equals(user.getPassword())) {
             errors.rejectValue("confirmPassword", "Diff.userForm.passwordConfirm");
         }
