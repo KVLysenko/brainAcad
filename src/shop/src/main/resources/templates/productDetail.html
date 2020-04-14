@@ -9,11 +9,11 @@
     <div>
         <h2 th:if="${product eq null }">No product yet!</h2>
         <div th:if="${product ne null}">
-            <h2>product detail</h2>
+            <h2 th:text="${product.name}"></h2>
             <table>
                 <thead>
                 <tr>
-                    <th>Название</th>
+<!--                    <th>Название</th>-->
                     <th>Описание</th>
                     <th>Цена</th>
                     <th>Размер</th>
@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                 <tr >
-                    <td th:text="${product.name}"></td>
+<!--                    <td th:text="${product.name}"></td>-->
                     <td th:text="${product.description}"></td>
                     <td th:text="${product.cost}"></td>
                     <td th:text="${product.size.name}"></td>

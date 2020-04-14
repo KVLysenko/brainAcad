@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="./styleLogin.css">
     <script
             src="https://code.jquery.com/jquery-3.4.1.js"
@@ -15,8 +18,12 @@
     <div class="form">
         <form class="register-form"  th:action="@{/registration}" th:object="${userEntity}" method="post">
             <input type="text" th:field="*{email}" id="email" name="email" autofocus="autofocus" placeholder="email address"/>
+            <small class="text-danger" th:text="${emailAlreadyExist}"></small>
             <input type="password" id="password" th:field="*{password}" placeholder="password"/>
             <input type="password" id="confirmPassword" th:field="*{confirmPassword}" placeholder="confirm password"/>
+            <small class="text-danger" th:text="${notMatchPassword}"></small>
+
+
             <button>Создать</button>
             <p class="message">Уже есть учетная запись? <a href="/login">Войти</a></p>
         </form>

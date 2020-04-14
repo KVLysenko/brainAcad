@@ -34,13 +34,16 @@ public class AuthController {
         UserEntity user = userRepository.findByEmail(userLogin.getEmail()).orElse(null);
         if (user == null){
             model.addAttribute("userLogin", userLogin);
+//            model.addAttribute("notFound", "Неверный логин");
             return "login";
         }
         if (!passwordEncoder.matches(userLogin.getPassword(), user.getPassword())) {
             userLogin.setPassword("");
             model.addAttribute("userLogin", userLogin);
+//            model.addAttribute("notMatch", "Неверный пароль");
             return "login";
         }
+
         return "home";
     }
 

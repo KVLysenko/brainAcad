@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Products</title>
+    <title>Товары</title>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
 <!--                    <td th:text="${item.material.name}"></td>-->
 <!--                    <td th:text="${item.function.name}"></td>-->
 <!--                    <td th:text="${item.color.name}"></td>-->
-                    <td><a th:href="@{/product/{id}(id=${item.id})}" >detail</a></td>
+                    <td><a th:href="@{/product/{id}(id=${item.id})}">подробнее</a></td>
                 </tr>
                 </tbody>
             </table>

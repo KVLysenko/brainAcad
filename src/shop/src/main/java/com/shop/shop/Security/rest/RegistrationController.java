@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "/registration")
 @AllArgsConstructor
@@ -36,9 +38,10 @@ public class RegistrationController {
     @PostMapping
     public String registration(@ModelAttribute("userEntity") UserRegistrationDto userEntity, BindingResult bindingResult, Model model) {
 
-        userValidator.validate(userEntity, bindingResult);
-
-        if (bindingResult.hasErrors()){
+//        userValidator.validate(userEntity, bindingResult);
+        Map validation = userValidator.myValidate(userEntity, model);
+        if ((Boolean) validation.get("error")){
+            model = (Model) validation.get("model");
             return "registration";
         }
 

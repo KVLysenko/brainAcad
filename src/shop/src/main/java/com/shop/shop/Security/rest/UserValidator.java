@@ -6,8 +6,12 @@ import com.shop.shop.Security.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @AllArgsConstructor
@@ -34,5 +38,22 @@ public class UserValidator {
         if (!user.getConfirmPassword().equals(user.getPassword())) {
             errors.rejectValue("confirmPassword", "Diff.userForm.passwordConfirm");
         }
+    }
+
+    public Map myValidate(UserRegistrationDto user, Model model) {
+        Map<Object, Object> temp = new HashMap<>();
+        temp.put("error", false);
+        if(!user.getPassword().equals(user.getConfirmPassword())) {
+            model.addAttribute("notMatchPassword", "Пароли не совпадают");
+            temp.put("error", true);
+        }
+
+        if(userRepository.findByEmail(user.getEmail()).isPresent()) {
+            model.addAttribute("emailAlreadyExist", "Такая почта уже используется");
+            temp.put("error", true);
+        }
+        temp.put("model", model);
+        return temp;
+
     }
 }

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Войти</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./styleLogin.css">
     <script
             src="https://code.jquery.com/jquery-3.4.1.js"
@@ -22,8 +24,22 @@
 <!--        </form>-->
         <form class="login-form" th:action="@{/login}" th:object="${userLogin}" method="post">
             <input type="text" th:field="*{email}" id="email" name="email" autofocus="autofocus" placeholder="email"/>
+            <small class="text-danger" th:text="${notFound}"></small>
             <input type="password" th:field="*{password}" id="password" name="password" placeholder="password"/>
+            <small class="text-danger" th:text="${notMatch}"></small>
             <button>Войти</button>
+
+<!--            <div th:if="${#request.getParameter('error') == 'true'}"-->
+<!--                 style="color:red;margin:10px 0px;">-->
+<!--                Login Failed!!!<br />-->
+<!--                Reason :-->
+<!--                <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"-->
+<!--                      th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">-->
+<!--                Static summary-->
+<!--         </span>-->
+
+<!--            </div>-->
+
             <p class="message">Нет учетной записи? <a href="/registration">Создать аккаунт</a></p>
         </form>
     </div>
