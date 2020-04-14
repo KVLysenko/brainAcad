@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Описание товара</title>
+</head>
+<body>
+<div>
+    <div>
+        <h2 th:if="${product eq null }">No product yet!</h2>
+        <div th:if="${product ne null}">
+            <h2>product detail</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
+                    <th>Размер</th>
+                    <th>Изготовитель</th>
+                    <th>Материал</th>
+<!--                    <th>Назначение</th>-->
+                    <th>Цвет</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr >
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td th:text="${product.cost}"></td>
+                    <td th:text="${product.size.name}"></td>
+                    <td th:text="${product.manufacturer.name}"></td>
+                    <td th:text="${product.material.name}"></td>
+<!--                    <td th:text="${product.function.name}"></td>-->
+                    <td th:text="${product.color.name}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+<!--        <p><a href="add.html" rel="add.html">Добавить товар</a></p>-->
+    </div>
+</div>
+</body>
+</html>
