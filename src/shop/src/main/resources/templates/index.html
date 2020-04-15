@@ -1,88 +1,301 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Домашний текстиль</title>
-    <link rel="stylesheet" href="./styleButton.css">
-    <style>
-        body {
-            font: 11pt Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
-            margin: 3; /* Отступы на странице */
-        }
-        h1 {
-            font-size: 36px; /* Размер шрифта */
-            margin: 0; /* Убираем отступы */
-            color: #fc6; /* Цвет текста */
-        }
-        h2 {
-            margin-top: 0; /* Убираем отступ сверху */
-        }
-        #header { /* Верхний блок */
-            background: #0080c0; /* Цвет фона */
-            padding: 10px; /* Поля вокруг текста */
-        }
-        #sidebar { /* Левая колонка */
-            float: left; /* Обтекание справа */
-            border: 1px solid #333; /* Параметры рамки вокруг */
-            width: 20%; /* Ширина колонки */
-            padding: 5px; /* Поля вокруг текста */
-            margin: 10px 10px 20px 5px; /* Значения отступов */
-        }
-        #content { /* Правая колонка */
-            margin: 10px 5px 20px 25%; /* Значения отступов */
-            padding: 5px; /* Поля вокруг текста */
-            border: 1px solid #333; /* Параметры рамки */
-        }
-        #footer { /* Нижний блок */
-            background: #333; /* Цвет фона */
-            padding: 5px; /* Поля вокруг текста */
-            color: #fff; /* Цвет текста */
-            clear: left; /* Отменяем действие float */
-        }
-    </style>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Магазин Домашнего текстиля</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <!--[if lte IE 6]><link rel="stylesheet" href="/ie6.css" type="text/css" media="all" /><![endif]-->
+
+    <meta name="keywwords" content="Shop Around - Great free html template for on-line shop. Use it as a start point for your on line business. The template can be easily implemented in many open source E-commerce platforms" />
+    <meta name="description" content="Shop Around - Great free html template for on-line shop. Use it as a start point for your on line business. The template can be easily implemented in many open source E-commerce platforms" />
+
+    <!-- JS -->
+    <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+    <script src="js/jquery-func.js" type="text/javascript"></script>
+    <!-- End JS -->
+
 </head>
 <body>
-<div id="header"><h1>Домашний текстиль</h1>
-    <div class="text-right">
-        <p> <a href="/login" class="button7">Войти в учётную запись</a>
-            <a href="/registration" class="button7">Зарегистрироваться</a>
-        </p>
+
+<!-- Shell -->
+<div class="shell">
+
+    <!-- Header -->
+    <div id="header">
+        <h1 id="logo"><a href="/">Домашний текстиль</a></h1>
+
+        <!-- Cart -->
+        		<div id="cart">
+        			<a href="#" class="cart-link">Корзина</a>
+        			<div class="cl">&nbsp;</div>
+        			<span>Articles: <strong>4</strong></span>
+        			&nbsp;&nbsp;
+        			<span>Cost: <strong>$250.99</strong></span>
+        		</div>
+        <!-- End Cart -->
+
+        <!-- Navigation -->
+        <div id="navigation">
+            <ul>
+                <li><a href="/" class="active">Главная страница</a></li>
+                <!--			    <li><a href="#">Support</a></li>-->
+                <li><a href="/home">Все товары</a></li>
+                <li><a href="/login">Войти в учётную запись</a></li>
+                <li><a href="/registration" class="button7">Зарегистрироваться</a></li>
+            </ul>
+        </div>
+        <!-- End Navigation -->
     </div>
+    <!-- End Header -->
 
-</div>
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
 
-<div id="sidebar">
-    <h2>Категории</h2>
-    <div th:each="item : ${homeTextileList}">
-        <a th:href="@{/home-textile-id/{id}(id=${item.id})}"><span th:text="${item.name}"></span></a>
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Content Slider -->
+            <div id="slider" class="box">
+                <div id="slider-holder">
+                    <ul>
+                        <li><a href="#"><img src="./images/slider/1.jpg" alt="" /></a></li>
+                        <li><a href="#"><img src="./images/slider/2.jpg" alt="" /></a></li>
+                        <li><a href="#"><img src="./images/slider/3.jpg" alt="" /></a></li>
+                        <li><a href="#"><img src="./images/slider/4.jpg" alt="" /></a></li>
+                    </ul>
+                </div>
+                <div id="slider-nav">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                </div>
+            </div>
+            <!-- End Content Slider -->
+
+            <!-- Products -->
+            <div class="products">
+                <div class="cl">&nbsp;</div>
+                <ul>
+                    <li>
+                        <a href="/product/10"><img src="images/productsDesc/delicate_leaves_soundsleep_ranfors.jpg" alt="" /></a>
+                        <div class="product-info">
+                            <h3>Постельное белье</h3>
+                            <div class="product-desc">
+                                <h4>Комплект постельного белья</h4>
+                                <p>Delicate leaves SoundSleep<br />сатин</p>
+                                <strong class="price">1669 грн.</strong>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/product/16"><img src="images/productsDesc/Arya_Brayden_pled.jpg" alt="" /></a>
+                        <div class="product-info">
+                            <h3>Плед</h3>
+                            <div class="product-desc">
+                                <h4>Плед хлопковый</h4>
+                                <p>Arya Brayden бежевый с синим<br /></p>
+                                <strong class="price">874 грн.</strong>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="last">
+                        <a href="/product/56"><img src="/images/productsDesc/pododeyalnik_soundsleep_ran137mint_myatnyy.jpg" alt="" /></a>
+                        <div class="product-info">
+                            <h3>Пододеяльник</h3>
+                            <div class="product-desc">
+                                <h4>Пододеяльник из ранфорса</h4>
+                                <p>SoundSleep Mint мятный<br /></p>
+                                <strong class="price">685 грн.</strong>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- End Products -->
+
+        </div>
+        <!-- End Content -->
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+
+            <!-- Categories -->
+            <div class="box categories">
+                <h2>Категории<span></span></h2>
+                <div class="box-content">
+                    <ul>
+                        <div th:each="item : ${homeTextileList}">
+                            <li><a th:href="@{/home-textile-id/{id}(id=${item.id})}">
+                                <span th:text="${item.name}"></span></a></li>
+
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="cl">&nbsp;</div>
     </div>
+    <!-- End Main -->
+
+    <!-- Side Full -->
+    <div class="side-full">
+
+        <!-- More Products -->
+        <div class="more-products">
+            <div class="more-products-holder">
+                <ul>
+                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_mirson_byaz_billerbeck1580285882.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/komplekt_navolochek_billerbeck_moana_ranfors_1573055484.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Navolochka/SoundSleep/komplekt_navolochek_soundsleep_azure_byaz.jpg.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Navolochka/SoundSleep/komplekt_navolochek_soundsleep_moana_ranfors.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Navolochka/SoundSleep/komplekt_navolochek_soundsleep_pasvalis_ranfors.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Odeyalo/SoundSleep/odeyalo_lebyazhiy_pukh_tm_soundsleep.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Pled/Selena/pled_flisovyy_selena_kaktusy_500211_1579866093.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Pled/Selena/pled_flisovyy_selena_kotiki_503305_1583339791.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Postelnoe_belje/FirstChoice/postelnoe_bele_first_choice_vip_moonlight_satin_imaj_lacivert.jpg.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Postelnoe_belje/SoundSleep/komplekt_postelnogo_belya_delicate_leaves_soundsleep_ranfors_1583150438.jpg" height="115" width="130" alt="" /></a></li>
+                    <li><a href="#"><img src="/images/Postelnoe_belje/SoundSleep/komplekt_postelnogo_belya_soundsleep_stripes_ranfors_1583143086.jpg" height="115" width="130" alt="" /></a></li>
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li><a href="#"><img src="/images/Navolochka/Billerbeck/navolochka_billerbeck_satin_amanda_1580795311.jpg" height="115" width="130" alt="" /></a></li>-->
+<!--                    <li class="last"><a href="#"><img src="" height="115" width="130" alt="" /></a></li>-->
+                </ul>
+            </div>
+            <div class="more-nav">
+                <a href="#" class="prev">previous</a>
+                <a href="#" class="next">next</a>
+            </div>
+        </div>
+        <!-- End More Products -->
+
+    </div>
+    <!-- End Side Full -->
+
+
+    <!-- End Footer -->
 
 </div>
-<div id="content">
-    <form>
-<!--       <p> <a href="/login"  class="button7" >Войти в учётную запись</a> <a href="/registration" class="button7">Зарегистрироваться</a></p>-->
-<!--        <p> <a href="/registration">Зарегистрироваться</a></p>-->
-        <p><input type="search" name="q" placeholder="Поиск товара">
-            <input type="submit" value="Найти"></p>
-    </form>
+<!-- End Shell -->
+<!-- Footer -->
+<div id="footer">
+    <p class="left">
+        <a href="/">Главная страница</a>
+        <span>|</span>
+        <a href="/home">Все товары</a>
+        <span>|</span>
+        <a href="/login">Войти в учетную запись</a>
+    </p>
+    <p class="right">
+        &copy; 2020 Домашний текстиль.
+    </p>
 </div>
-<!--<div>-->
-<!--    <div>-->
-
-<!--            <h2>Категории</h2>-->
-
-<!--                <div th:each="item : ${homeTextileList}">-->
-<!--                    <a th:href="@{/home-textile-id/{id}(id=${item.id})}"><span th:text="${item.name}"></span></a>-->
-<!--                </div>-->
-<!--        <form>-->
-<!--            <p><input type="search" name="q" placeholder="Поиск товара">-->
-<!--                <input type="submit" value="Найти"></p>-->
-<!--        </form>-->
-
-<!--        </div>-->
-<!--&lt;!&ndash;        <p><a href="add.html" rel="add.html">Добавить товар</a></p>&ndash;&gt;-->
-<!--    </div>-->
-<!--</div>-->
-<div id="footer" >&copy; Кирилл Лысенко</div>
 </body>
 </html>
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Домашний текстиль</title>-->
+<!--    <link rel="stylesheet" href="./styleButton.css">-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        body {&ndash;&gt;-->
+<!--&lt;!&ndash;            font: 11pt Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 3; /* Отступы на странице */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        h1 {&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 36px; /* Размер шрифта */&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0; /* Убираем отступы */&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #fc6; /* Цвет текста */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        h2 {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin-top: 0; /* Убираем отступ сверху */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        #header { /* Верхний блок */&ndash;&gt;-->
+<!--&lt;!&ndash;            background: #0080c0; /* Цвет фона */&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 10px; /* Поля вокруг текста */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        #sidebar { /* Левая колонка */&ndash;&gt;-->
+<!--&lt;!&ndash;            float: left; /* Обтекание справа */&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 1px solid #333; /* Параметры рамки вокруг */&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 20%; /* Ширина колонки */&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 5px; /* Поля вокруг текста */&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 10px 10px 20px 5px; /* Значения отступов */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        #content { /* Правая колонка */&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 10px 5px 20px 25%; /* Значения отступов */&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 5px; /* Поля вокруг текста */&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 1px solid #333; /* Параметры рамки */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        #footer { /* Нижний блок */&ndash;&gt;-->
+<!--&lt;!&ndash;            background: #333; /* Цвет фона */&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 5px; /* Поля вокруг текста */&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #fff; /* Цвет текста */&ndash;&gt;-->
+<!--&lt;!&ndash;            clear: left; /* Отменяем действие float */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="header"><h1>Домашний текстиль</h1>-->
+<!--    <div class="text-right">-->
+<!--        <p> <a href="/login" class="button7">Войти в учётную запись</a>-->
+<!--            <a href="/registration" class="button7">Зарегистрироваться</a>-->
+<!--        </p>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<div id="sidebar">-->
+<!--    <h2>Категории</h2>-->
+<!--    <div th:each="item : ${homeTextileList}">-->
+<!--        <a th:href="@{/home-textile-id/{id}(id=${item.id})}"><span th:text="${item.name}"></span></a>-->
+<!--    </div>-->
+
+<!--</div>-->
+<!--<div id="content">-->
+<!--    <form>-->
+<!--&lt;!&ndash;       <p> <a href="/login"  class="button7" >Войти в учётную запись</a> <a href="/registration" class="button7">Зарегистрироваться</a></p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p> <a href="/registration">Зарегистрироваться</a></p>&ndash;&gt;-->
+<!--        <p><input type="search" name="q" placeholder="Поиск товара">-->
+<!--            <input type="submit" value="Найти"></p>-->
+<!--    </form>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <h2>Категории</h2>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div th:each="item : ${homeTextileList}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a th:href="@{/home-textile-id/{id}(id=${item.id})}"><span th:text="${item.name}"></span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <form>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p><input type="search" name="q" placeholder="Поиск товара">&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="submit" value="Найти"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <p><a href="add.html" rel="add.html">Добавить товар</a></p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div id="footer" >&copy; Кирилл Лысенко</div>-->
+<!--</body>-->
+<!--</html>-->

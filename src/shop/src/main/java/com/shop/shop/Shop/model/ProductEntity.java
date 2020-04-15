@@ -79,6 +79,9 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "picture")
+    private String urlPicture;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "home_textile_id")
     private HomeTextileEntity homeTextile;
@@ -102,5 +105,7 @@ public class ProductEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "size_id")
     private SizeEntity size;
+
+
 
 }

@@ -19,6 +19,7 @@ public class ProductDto {
     private MaterialEntity material;
     private ColorEntity color;
     private SizeEntity size;
+    private String urlPicture;
 
     public ProductDto(ProductEntity entity){
         this.id = entity.getId();
@@ -31,6 +32,7 @@ public class ProductDto {
         this.material=entity.getMaterial();
         this.color=entity.getColor();
         this.size=entity.getSize();
+        this.urlPicture=entity.getUrlPicture();
     }
 
     public static List<ProductDto> productEntityListToDtoList(List<ProductEntity> productEntityList){

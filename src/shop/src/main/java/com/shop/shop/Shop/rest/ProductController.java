@@ -29,12 +29,14 @@ public class ProductController {
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("products", ProductDto.productEntityListToDtoList(productService.getAll()));
+        model.addAttribute("homeTextileList", homeTextileService.getAll());
         return "home";
     }
 
     @GetMapping("product/{id}")
     public String index(Model model, @PathVariable(name = "id") Long productId) {
         model.addAttribute("product", new ProductDto(productService.getById(productId)));
+        model.addAttribute("homeTextileList", homeTextileService.getAll());
         return "productDetail";
     }
 
@@ -43,6 +45,7 @@ public class ProductController {
         HomeTextileEntity homeTextileEntity = homeTextileService.getById(homeTextileId);
         model.addAttribute("products", ProductDto.productEntityListToDtoList(productService.getByHomeTextile(homeTextileEntity)));
         model.addAttribute("category", homeTextileEntity.getName());
+        model.addAttribute("homeTextileList", homeTextileService.getAll());
         return "home";
     }
 
