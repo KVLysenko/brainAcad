@@ -20,7 +20,6 @@
 </head>
 <body>
 
- Shell
 <div class="shell">
 
     <!-- Header -->
@@ -31,9 +30,9 @@
         <div id="cart">
             <a href="#" class="cart-link">Корзина</a>
             <div class="cl">&nbsp;</div>
-            <span>Articles: <strong>4</strong></span>
+            <span>Articles: <strong>пусто</strong></span>
             &nbsp;&nbsp;
-            <span>Cost: <strong>$250.99</strong></span>
+            <span>Cost: <strong></strong></span>
         </div>
         <!-- End Cart -->
 
@@ -63,15 +62,14 @@
                 <div class="cl"></div>
                 <ul>
                     <li th:each="item : ${products}">
-
-                        <a th:href="@{/product/{id}(id=${item.id})}"><img th:src="${item.urlPicture}" height="500px" width="500px" alt="" /></a>
-
+                        <a th:href="@{/product/{id}(id=${item.id})}">
+                            <img th:src="${item.urlPicture}" height="500px" width="500px" alt="" /></a>
                         <div class="product-info">
-                            <!--                           <h3 th:text="${item.name}"></h3>-->
                             <div class="product-desc">
-                                <h4 th:text="${category}"></h4><br />
-                                <p><h3 th:text="${item.name}"></h3><br /></p>
-                                <strong class="price" th:text="${item.cost}"><a> грн.</a> </strong>
+                                <h3 th:text="${item.homeTextile.name}"></h3><br />
+                                <p><h4 th:text="${item.name}"></h4><br /></p>
+                                <strong class="price" th:text="${item.cost}" ><a></a> </strong><strong class="price">грн.</strong>
+
                             </div>
                         </div>
                     </li>
@@ -102,12 +100,15 @@
                     </div>
                 </div>
             </div>
-            <!-- End Categories -->
 
-        </div>
+            <!-- End Categories -->
+    </div>
+
+
         <!-- End Sidebar -->
 
         <div class="cl"> </div>
+
     </div>
     <!-- End Main -->
 
@@ -115,6 +116,10 @@
 <!-- <p><a href="/">Вернуться на главную страницу</a></p>-->
     </div>
  <script type="text/javascript" src="//web-ptica.ru/VRV-files/knopkavverh/1.js"></script>
+
+<!--<a onclick="javascript:history.back();return false;">-->
+<!--    <img src="/images/back.png" alt=""/>-->
+<!--</a>-->
 
      <!-- Footer -->
      <div id="footer">
@@ -126,7 +131,7 @@
             <a href="/login">Войти в учетную запись</a>
         </p>
         <p class="right">
-            &copy; 2020 Домашний текстиль.
+            &copy; 2020 Домашний текстиль
         </p>
     </div>
     <!-- End Footer -->

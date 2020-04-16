@@ -1,45 +1,165 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
 <head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Магазин Домашнего текстиля</title>
+    <link rel="stylesheet" href="/styleProductDetail.css" type="text/css" media="all" />
+
+
+    <!--<link rel="stylesheet" href="/ie6.css" type="text/css" media="all" /><![endif]-->
+
+    <meta name="keywwords" content="Shop Around - Great free html template for on-line shop. Use it as a start point for your on line business. The template can be easily implemented in many open source E-commerce platforms" />
+    <meta name="description" content="Shop Around - Great free html template for on-line shop. Use it as a start point for your on line business. The template can be easily implemented in many open source E-commerce platforms" />
+
+    <!-- JS -->
+    <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+    <script src="js/jquery-func.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="//web-ptica.ru/VRV-files/jquery-2.1.3.min.js"></script>
+
     <meta charset="UTF-8">
     <title>Описание товара</title>
 </head>
 <body>
-<div>
-    <div>
-        <h2 th:if="${product eq null }">No product yet!</h2>
-        <div th:if="${product ne null}">
-            <h2 th:text="${product.name}"></h2>
-            <table>
-                <thead>
-                <tr>
-<!--                    <th>Название</th>-->
-                    <th>Описание</th>
-                    <th>Цена</th>
-                    <th>Размер</th>
-                    <th>Изготовитель</th>
-                    <th>Материал</th>
-<!--                    <th>Назначение</th>-->
-                    <th>Цвет</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr >
-<!--                    <td th:text="${product.name}"></td>-->
-                    <td th:text="${product.description}"></td>
-                    <td th:text="${product.cost}"></td>
-                    <td th:text="${product.size.name}"></td>
-                    <td th:text="${product.manufacturer.name}"></td>
-                    <td th:text="${product.material.name}"></td>
-<!--                    <td th:text="${product.function.name}"></td>-->
-                    <td th:text="${product.color.name}"></td>
-                    <img th:src="${product.urlPicture}" src="" alt="" />
-                </tr>
-                </tbody>
-            </table>
+<div class="shell">
+
+    <!-- Header -->
+    <div id="header">
+        <h1 id="logo"><a href="/">Домашний текстиль</a></h1>
+
+        <!-- Cart -->
+        <div id="cart">
+            <a href="#" class="cart-link">Корзина</a>
+            <div class="cl">&nbsp;</div>
+            <span>Articles: <strong>пусто</strong></span>
+            &nbsp;&nbsp;
+            <span>Cost: <strong></strong></span>
         </div>
-<!--        <p><a href="add.html" rel="add.html">Добавить товар</a></p>-->
+        <!-- End Cart -->
+
+        <!-- Navigation -->
+        <div id="navigation">
+            <ul>
+                <li><a href="/" class="active">Главная страница</a></li>
+                <!--			    <li><a href="#">Support</a></li>-->
+                <li><a href="/home">Все товары</a></li>
+                <li><a href="/login">Войти в учётную запись</a></li>
+                <li><a href="/registration" class="button7">Зарегистрироваться</a></li>
+            </ul>
+        </div>
+        <!-- End Navigation -->
     </div>
+    <!-- End Header -->
+
+    <!-- Main -->
+    <div id="main">
+        <!-- Content -->
+        <div id="content">
+            <!-- Products -->
+            <div class="products">
+                <div class="cl"></div>
+                <ul>
+                    <div class="block-left">
+                    <img th:src="${product.urlPicture}" height="700px" width="700px" src="" alt="" />
+                    </div>
+                        <div class="product-info">
+                        <div class="block-right">
+<!--                            <div class="box-content">-->
+                            <p><h5 th:text="${product.name}" ></h5><br /></p>
+                               <h3><th>Описание:</th> <h4 th:text="${product.description}" align="justify"></h4><br /></h3>
+                                <th>Изготовитель:</th><h4 th:text="${product.manufacturer.name}"></h4><br />
+                                <th>Материал:</th><h4 th:text="${product.material.name}"></h4><br />
+                                <th>Цвет:</th><h4 th:text="${product.color.name}"></h4><br />
+                                <th>Размер:</th><h4 th:text="${product.size.name}"></h4><br />
+                                <th>Цена, грн:</th><h4 th:text="${product.cost}"></h4><br />
+
+                            <div>
+                            <link rel="stylesheet" href="/buyButton.css" type="text/css" media="all" />
+                            <script src="js/buyButton.js" type="text/javascript"></script>
+                            <div class="shop">
+                                <svg viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M 18 32.34 l -8.34 -8.34 -2.83 2.83 11.17 11.17 24 -24 -2.83 -2.83 z" stroke="#3da35a" fill="transparent"/>
+                                </svg>
+                            </div>
+
+                           <p style="text-align:center;" > <button>Buy this product</button></p>
+                            </div>
+
+
+
+                        </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- End Products -->
+
+        </div>
+        <!-- End Content -->
+
+                <!-- Sidebar -->
+        <!-- Categories -->
+        <div id="sidebar">
+            <div class="box categories">
+                <h2>Категории<span></span></h2>
+                <div class="box-content">
+                    <ul>
+                        <li><a href="/home-textile-id/1">Постельное бельё</a></li>
+                        <li><a href="/home-textile-id/3">Одеяла</a></li>
+                        <li><a href="/home-textile-id/4">Подушки</a></li>
+                        <li><a href="/home-textile-id/5">Наволочки</a></li>
+                        <li><a href="/home-textile-id/6">Полотенца</a></li>
+                        <li><a href="/home-textile-id/7">Пододеяльники</a></li>
+                        <li><a href="/home-textile-id/8">Пледы</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Categories -->
+
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="cl"> </div>
 </div>
+<!-- End Main -->
+
+
+<!-- <p><a href="/">Вернуться на главную страницу</a></p>-->
+</div>
+<script type="text/javascript" src="//web-ptica.ru/VRV-files/knopkavverh/1.js"></script>
+<!--<a href="#" onclick="history.back();return false;">Вернуться назад</a>-->
+
+<a onclick="javascript:history.back();return false;">
+    <img src="/images/back.png" alt=""/>
+</a>
+
+<!-- Footer -->
+<div id="footer">
+    <p class="left">
+        <a href="/">Главная страница</a>
+        <span>|</span>
+        <a href="/home">Все товары</a>
+        <span>|</span>
+        <a href="/login">Войти в учетную запись</a>
+    </p>
+    <p class="right">
+        &copy; 2020 Домашний текстиль.
+    </p>
+</div>
+<!-- End Footer -->
+</div>
+
+
+
+
 </body>
 </html>
+
